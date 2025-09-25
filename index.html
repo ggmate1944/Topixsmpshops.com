@@ -1,37 +1,269 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="hu">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Interaktív oldal</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Shop - GitHub Pages Template</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root{
+      --accent:#06b6d4; /* türkiz */
+      --muted:#6b7280;
+      --bg:#0f172a; /* sötét fejléchez */
+    }
+    body{font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;}
+    /* kis finomítások a termékkártyákhoz */
+    .card-shadow{box-shadow: 0 6px 18px rgba(2,6,23,0.35);} 
+  </style>
 </head>
-<body>
-  <header>
-    <h1>Üdv a weboldalamon 👋</h1>
-    <nav>
-      <a href="#rolam">Rólam</a>
-      <a href="#kapcsolat">Kapcsolat</a>
-    </nav>
+<body class="bg-white text-gray-900">
+  <!-- Header -->
+  <header class="bg-white/80 backdrop-blur-sm sticky top-0 z-40 border-b">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-sky-400 to-teal-400 flex items-center justify-center text-white font-bold">T</div>
+        <div>
+          <div class="font-semibold">Topixity Shop</div>
+          <div class="text-xs text-gray-500 -mt-1">Modern webáruház</div>
+        </div>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-6 text-sm">
+        <a href="#" class="hover:text-sky-600">Főoldal</a>
+        <a href="#products" class="hover:text-sky-600">Termékek</a>
+        <a href="#about" class="hover:text-sky-600">Rólunk</a>
+        <a href="#" class="text-sm px-4 py-2 bg-gradient-to-r from-sky-400 to-teal-400 text-white rounded-lg shadow-sm">Bejelentkezés</a>
+      </nav>
+
+      <div class="md:hidden">
+        <button aria-label="menu" class="p-2 rounded-lg border">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
   </header>
 
-  <main>
-    <section id="rolam">
-      <h2>Rólam</h2>
-      <p>Ez egy demo GitHub Pages oldal, ahol kattintható gomb is van.</p>
-      <button id="helloBtn">Kattints rám!</button>
+  <!-- Hero -->
+  <main class="max-w-6xl mx-auto px-6 pt-10 pb-20">
+    <section class="grid md:grid-cols-2 gap-8 items-center">
+      <div>
+        <p class="text-sm text-teal-600 font-semibold">Újdonság</p>
+        <h1 class="mt-3 text-4xl md:text-5xl font-extrabold leading-tight">Stílusos és modern webáruház sablon</h1>
+        <p class="mt-4 text-gray-600 max-w-xl">Ez a sablon a megadott oldal stílusából inspirálódott: nagy hőskép, tiszta termékkártyák és élénk akcentusszínek. Használd GitHub Pages-re, vagy alakítsd tovább React / Next.js projekthez.</p>
+
+        <div class="mt-6 flex gap-4">
+          <a href="#products" class="inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-gradient-to-r from-sky-500 to-teal-400 text-white font-medium shadow-lg">Vásárlás</a>
+          <a href="#about" class="inline-flex items-center gap-2 px-5 py-3 rounded-lg border border-gray-200 text-gray-700">Tudj meg többet</a>
+        </div>
+
+        <div class="mt-8 flex items-center gap-6 text-sm text-gray-600">
+          <div class="flex items-center gap-3">
+            <img src="https://picsum.photos/seed/review1/48/48" alt="" class="w-10 h-10 rounded-full" />
+            <div>
+              <div class="font-semibold">5.0</div>
+              <div class="text-xs">(423 értékelés)</div>
+            </div>
+          </div>
+
+          <div class="h-6 w-px bg-gray-200"></div>
+
+          <div class="text-sm">Ingyenes szállítás 10 000 Ft felett</div>
+        </div>
+      </div>
+
+      <div class="relative">
+        <div class="rounded-2xl overflow-hidden card-shadow">
+          <img src="https://picsum.photos/seed/hero/900/700" alt="hero" class="w-full h-[420px] object-cover" />
+        </div>
+      </div>
     </section>
 
-    <section id="kapcsolat">
-      <h2>Kapcsolat</h2>
-      <p>Email: pelda@pelda.hu</p>
+    <!-- Products -->
+    <section id="products" class="mt-16">
+      <div class="flex items-center justify-between">
+        <h2 class="text-2xl font-semibold">Népszerű termékek</h2>
+        <div class="text-sm text-gray-500">Mutatva 1–8/32</div>
+      </div>
+
+      <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Product Card x8 (példa) -->
+        <!-- Repeatable card -->
+        <article class="bg-white border rounded-xl p-4 card-shadow">
+          <img src="https://picsum.photos/seed/p1/600/400" alt="termek" class="w-full h-44 object-cover rounded-md" />
+          <div class="mt-3">
+            <h3 class="font-semibold text-lg">Stílusos fülhallgató</h3>
+            <p class="text-sm text-gray-500 mt-1">Vezeték nélküli, hosszú üzemidő</p>
+            <div class="mt-3 flex items-center justify-between">
+              <div>
+                <div class="font-bold">19 990 Ft</div>
+                <div class="text-xs text-gray-400 line-through">24 990 Ft</div>
+              </div>
+              <button class="px-3 py-2 bg-teal-500 text-white rounded-lg text-sm">Kosárba</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="bg-white border rounded-xl p-4 card-shadow">
+          <img src="https://picsum.photos/seed/p2/600/400" alt="termek" class="w-full h-44 object-cover rounded-md" />
+          <div class="mt-3">
+            <h3 class="font-semibold text-lg">Minimal táska</h3>
+            <p class="text-sm text-gray-500 mt-1">Vízlepergető, városi dizájn</p>
+            <div class="mt-3 flex items-center justify-between">
+              <div>
+                <div class="font-bold">8 490 Ft</div>
+              </div>
+              <button class="px-3 py-2 bg-teal-500 text-white rounded-lg text-sm">Kosárba</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="bg-white border rounded-xl p-4 card-shadow">
+          <img src="https://picsum.photos/seed/p3/600/400" alt="termek" class="w-full h-44 object-cover rounded-md" />
+          <div class="mt-3">
+            <h3 class="font-semibold text-lg">Okosóra</h3>
+            <p class="text-sm text-gray-500 mt-1">Pulzusmérés, üzemidő 7 nap</p>
+            <div class="mt-3 flex items-center justify-between">
+              <div>
+                <div class="font-bold">29 990 Ft</div>
+              </div>
+              <button class="px-3 py-2 bg-teal-500 text-white rounded-lg text-sm">Kosárba</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="bg-white border rounded-xl p-4 card-shadow">
+          <img src="https://picsum.photos/seed/p4/600/400" alt="termek" class="w-full h-44 object-cover rounded-md" />
+          <div class="mt-3">
+            <h3 class="font-semibold text-lg">Asztali lámpa</h3>
+            <p class="text-sm text-gray-500 mt-1">Állítható fényerő, USB-C</p>
+            <div class="mt-3 flex items-center justify-between">
+              <div>
+                <div class="font-bold">5 490 Ft</div>
+              </div>
+              <button class="px-3 py-2 bg-teal-500 text-white rounded-lg text-sm">Kosárba</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- more cards can be copied -->
+        <article class="bg-white border rounded-xl p-4 card-shadow">
+          <img src="https://picsum.photos/seed/p5/600/400" alt="termek" class="w-full h-44 object-cover rounded-md" />
+          <div class="mt-3">
+            <h3 class="font-semibold text-lg">Vízálló hátizsák</h3>
+            <p class="text-sm text-gray-500 mt-1">Nagy belső tér, laptop rekesz</p>
+            <div class="mt-3 flex items-center justify-between">
+              <div>
+                <div class="font-bold">12 990 Ft</div>
+              </div>
+              <button class="px-3 py-2 bg-teal-500 text-white rounded-lg text-sm">Kosárba</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="bg-white border rounded-xl p-4 card-shadow">
+          <img src="https://picsum.photos/seed/p6/600/400" alt="termek" class="w-full h-44 object-cover rounded-md" />
+          <div class="mt-3">
+            <h3 class="font-semibold text-lg">Vezeték nélküli töltő</h3>
+            <p class="text-sm text-gray-500 mt-1">Gyors töltés, kis helyen</p>
+            <div class="mt-3 flex items-center justify-between">
+              <div>
+                <div class="font-bold">6 990 Ft</div>
+              </div>
+              <button class="px-3 py-2 bg-teal-500 text-white rounded-lg text-sm">Kosárba</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="bg-white border rounded-xl p-4 card-shadow">
+          <img src="https://picsum.photos/seed/p7/600/400" alt="termek" class="w-full h-44 object-cover rounded-md" />
+          <div class="mt-3">
+            <h3 class="font-semibold text-lg">Hordozható hangszóró</h3>
+            <p class="text-sm text-gray-500 mt-1">Bluetooth 5.0, erős basszus</p>
+            <div class="mt-3 flex items-center justify-between">
+              <div>
+                <div class="font-bold">11 490 Ft</div>
+              </div>
+              <button class="px-3 py-2 bg-teal-500 text-white rounded-lg text-sm">Kosárba</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="bg-white border rounded-xl p-4 card-shadow">
+          <img src="https://picsum.photos/seed/p8/600/400" alt="termek" class="w-full h-44 object-cover rounded-md" />
+          <div class="mt-3">
+            <h3 class="font-semibold text-lg">USB-C kábel</h3>
+            <p class="text-sm text-gray-500 mt-1">Tartós, gyors töltés</p>
+            <div class="mt-3 flex items-center justify-between">
+              <div>
+                <div class="font-bold">990 Ft</div>
+              </div>
+              <button class="px-3 py-2 bg-teal-500 text-white rounded-lg text-sm">Kosárba</button>
+            </div>
+          </div>
+        </article>
+      </div>
     </section>
+
+    <!-- About -->
+    <section id="about" class="mt-16 bg-gradient-to-r from-slate-50 to-white rounded-xl p-8">
+      <div class="md:flex md:items-center md:gap-8">
+        <div class="md:w-1/2">
+          <h3 class="text-2xl font-semibold">Rólunk</h3>
+          <p class="mt-3 text-gray-600">Egyszerű, gyors és barátságos webáruház. Ez a sablon demonstrálja a hasonló elrendezést: nagy képi világ, rendezett termékek és könnyű navigáció.</p>
+          <ul class="mt-4 text-sm text-gray-600 space-y-2">
+            <li>• Reszponzív design — mobilon és asztalin jól néz ki</li>
+            <li>• Könnyen testreszabható Tailwinddel</li>
+            <li>• GitHub Pages kompatibilis (egyszerű index.html feltöltés)</li>
+          </ul>
+        </div>
+        <div class="md:w-1/2 mt-6 md:mt-0">
+          <img src="https://picsum.photos/seed/about/800/500" alt="about" class="rounded-lg w-full object-cover" />
+        </div>
+      </div>
+    </section>
+
   </main>
 
-  <footer>
-    <p>&copy; 2025 Királyom</p>
+  <!-- Footer -->
+  <footer class="bg-slate-900 text-slate-200 py-10">
+    <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div>
+        <div class="flex items-center gap-3 mb-3">
+          <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-sky-400 to-teal-400 flex items-center justify-center text-white font-bold">T</div>
+          <div>
+            <div class="font-semibold">Topixity Shop</div>
+            <div class="text-xs text-slate-400">Modern webáruház</div>
+          </div>
+        </div>
+        <p class="text-sm text-slate-400">Kapcsolat: info@topixity.hu</p>
+      </div>
+
+      <div>
+        <h4 class="font-semibold">Gyors linkek</h4>
+        <ul class="mt-3 text-sm text-slate-400 space-y-2">
+          <li><a href="#" class="hover:text-white">Szállítás</a></li>
+          <li><a href="#" class="hover:text-white">Visszaküldés</a></li>
+          <li><a href="#" class="hover:text-white">Adatvédelem</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="font-semibold">Iratkozz fel</h4>
+        <p class="text-sm text-slate-400 mt-2">Kedvezmények és újdonságok e-mailben.</p>
+        <form class="mt-4 flex gap-2">
+          <input type="email" placeholder="E-mail" class="px-3 py-2 rounded-lg w-full text-slate-900" />
+          <button class="px-4 py-2 rounded-lg bg-teal-500 text-white">Feliratkozás</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="max-w-6xl mx-auto px-6 mt-8 text-xs text-slate-500">© 2025 Topixity Shop. Minden jog fenntartva.</div>
   </footer>
 
-  <script src="script.js"></script>
 </body>
 </html>
