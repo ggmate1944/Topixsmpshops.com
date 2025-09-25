@@ -1,42 +1,44 @@
-<!DOCTYPE html>
 <html lang="hu">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Shop Választó</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <style>
-    body {
-      background-color: #0a0f0a;
-      color: #d4ffd4;
-      font-family: 'Segoe UI', sans-serif;
-    }
-    .shop-btn {
-      background: linear-gradient(135deg, #1a3d1a, #2f6e2f);
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-    .shop-btn:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 20px #2f6e2f;
-    }
-    .fade-in {
-      animation: fadeIn 1s ease-in;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Shop Választó</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+<style>
+body {
+background: linear-gradient(135deg, #0a0f0a, #1a3d1a);
+color: #d4ffd4;
+font-family: 'Segoe UI', sans-serif;
+}
+.shop-btn {
+background: linear-gradient(135deg, #1a3d1a, #2f6e2f);
+transition: transform 0.3s, box-shadow 0.3s;
+}
+.shop-btn:hover {
+transform: scale(1.05);
+box-shadow: 0 0 20px #2f6e2f;
+}
+.fade-in {
+animation: fadeIn 1s ease-in;
+}
+@keyframes fadeIn {
+from { opacity: 0; transform: translateY(20px); }
+to { opacity: 1; transform: translateY(0); }
+}
+</style>
 </head>
 <body class="flex flex-col items-center justify-center min-h-screen fade-in">
 
-  <h1 class="text-4xl font-bold text-green-400 mb-10">Válassz Shopot</h1>
 
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-6 w-11/12 md:w-2/3">
-    <a href="balushop.html" class="shop-btn rounded-2xl p-8 text-center text-xl font-semibold text-green-200">Balushop</a>
-    <a href="ermeshop.html" class="shop-btn rounded-2xl p-8 text-center text-xl font-semibold text-green-200">Ermeshop</a>
-    <a href="tekishop.html" class="shop-btn rounded-2xl p-8 text-center text-xl font-semibold text-green-200">Tekishop</a>
-  </div>
+<h1 class="text-4xl font-bold text-green-400 mb-10 text-center">Válassz Shopot</h1>
+
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 w-11/12 md:w-2/3">
+<a href="balushop.html" class="shop-btn rounded-2xl p-8 text-center text-xl font-semibold text-green-200">Balushop</a>
+<a href="ermeshop.html" class="shop-btn rounded-2xl p-8 text-center text-xl font-semibold text-green-200">Ermeshop</a>
+<a href="tekishop.html" class="shop-btn rounded-2xl p-8 text-center text-xl font-semibold text-green-200">Tekishop</a>
+</div>
+
 
 </body>
 </html>
