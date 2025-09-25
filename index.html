@@ -1,175 +1,42 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="hu">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Topixity Shop - Dark Theme</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shop Választó</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <style>
-    :root{
-      --primary:#16a34a; /* zöld akcentus */
-      --primary-dark:#065f46; /* sötétebb zöld */
-      --bg-dark:#0a0f0a; /* háttér */
-      --card:#111c11;
-      --text:#e2e8f0;
+    body {
+      background-color: #0a0f0a;
+      color: #d4ffd4;
+      font-family: 'Segoe UI', sans-serif;
     }
-    body{font-family: 'Inter', sans-serif;}
-    .card-shadow{box-shadow: 0 6px 18px rgba(0,0,0,0.45);} 
+    .shop-btn {
+      background: linear-gradient(135deg, #1a3d1a, #2f6e2f);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .shop-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px #2f6e2f;
+    }
+    .fade-in {
+      animation: fadeIn 1s ease-in;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
   </style>
 </head>
-<body class="bg-[var(--bg-dark)] text-[var(--text)]">
-  <!-- Header -->
-  <header class="bg-[var(--card)] sticky top-0 z-40 border-b border-green-900">
-    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-      <a href="#" class="flex items-center gap-3">
-        <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center text-black font-bold">T</div>
-        <div>
-          <div class="font-semibold">Topixity Shop</div>
-          <div class="text-xs text-gray-400 -mt-1">Dark Minecraft Webshop</div>
-        </div>
-      </a>
+<body class="flex flex-col items-center justify-center min-h-screen fade-in">
 
-      <nav class="hidden md:flex items-center gap-6 text-sm">
-        <a href="#" class="hover:text-green-400">Főoldal</a>
-        <a href="#products" class="hover:text-green-400">Termékek</a>
-        <a href="#about" class="hover:text-green-400">Rólunk</a>
-        <a href="#" class="text-sm px-4 py-2 bg-green-600 hover:bg-green-500 text-white rounded-lg shadow">Bejelentkezés</a>
-      </nav>
+  <h1 class="text-4xl font-bold text-green-400 mb-10">Válassz Shopot</h1>
 
-      <div class="md:hidden">
-        <button aria-label="menu" class="p-2 rounded-lg border border-green-700">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
-        </button>
-      </div>
-    </div>
-  </header>
-
-  <!-- Hero -->
-  <main class="max-w-6xl mx-auto px-6 pt-10 pb-20">
-    <section class="grid md:grid-cols-2 gap-8 items-center">
-      <div>
-        <p class="text-sm text-green-400 font-semibold">Minecraft Stílus</p>
-        <h1 class="mt-3 text-4xl md:text-5xl font-extrabold leading-tight text-white">Sötétzöld Webshop Sablon</h1>
-        <p class="mt-4 text-gray-400 max-w-xl">A sablon hasonló a Topixity oldal stílusához: sötét háttér, zöld akcentus, letisztult kártyák. Használd GitHub Pages-re, vagy bővítsd tovább.</p>
-
-        <div class="mt-6 flex gap-4">
-          <a href="#products" class="inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-green-600 hover:bg-green-500 text-white font-medium shadow-lg">Vásárlás</a>
-          <a href="#about" class="inline-flex items-center gap-2 px-5 py-3 rounded-lg border border-green-600 text-green-400">Tudj meg többet</a>
-        </div>
-      </div>
-
-      <div class="relative">
-        <div class="rounded-2xl overflow-hidden card-shadow border border-green-900">
-          <img src="https://picsum.photos/seed/greenhero/900/700" alt="hero" class="w-full h-[420px] object-cover" />
-        </div>
-      </div>
-    </section>
-
-    <!-- Products -->
-    <section id="products" class="mt-16">
-      <div class="flex items-center justify-between">
-        <h2 class="text-2xl font-semibold text-green-400">Népszerű termékek</h2>
-        <div class="text-sm text-gray-500">Mutatva 1–4/32</div>
-      </div>
-
-      <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        <article class="bg-[var(--card)] border border-green-900 rounded-xl p-4 card-shadow">
-          <img src="https://picsum.photos/seed/g1/600/400" alt="termek" class="w-full h-44 object-cover rounded-md" />
-          <div class="mt-3">
-            <h3 class="font-semibold text-lg text-white">Ultimate Rank</h3>
-            <p class="text-sm text-gray-400 mt-1">90 napos hozzáférés</p>
-            <div class="mt-3 flex items-center justify-between">
-              <div class="font-bold text-green-400">3 990 Ft</div>
-              <button class="px-3 py-2 bg-green-600 hover:bg-green-500 text-white rounded-lg text-sm">Kosárba</button>
-            </div>
-          </div>
-        </article>
-
-        <article class="bg-[var(--card)] border border-green-900 rounded-xl p-4 card-shadow">
-          <img src="https://picsum.photos/seed/g2/600/400" alt="termek" class="w-full h-44 object-cover rounded-md" />
-          <div class="mt-3">
-            <h3 class="font-semibold text-lg text-white">VIP Rank</h3>
-            <p class="text-sm text-gray-400 mt-1">30 napos prémium</p>
-            <div class="mt-3 flex items-center justify-between">
-              <div class="font-bold text-green-400">1 990 Ft</div>
-              <button class="px-3 py-2 bg-green-600 hover:bg-green-500 text-white rounded-lg text-sm">Kosárba</button>
-            </div>
-          </div>
-        </article>
-
-        <article class="bg-[var(--card)] border border-green-900 rounded-xl p-4 card-shadow">
-          <img src="https://picsum.photos/seed/g3/600/400" alt="termek" class="w-full h-44 object-cover rounded-md" />
-          <div class="mt-3">
-            <h3 class="font-semibold text-lg text-white">Kit Starter</h3>
-            <p class="text-sm text-gray-400 mt-1">Hasznos tárgyak kezdőknek</p>
-            <div class="mt-3 flex items-center justify-between">
-              <div class="font-bold text-green-400">990 Ft</div>
-              <button class="px-3 py-2 bg-green-600 hover:bg-green-500 text-white rounded-lg text-sm">Kosárba</button>
-            </div>
-          </div>
-        </article>
-
-        <article class="bg-[var(--card)] border border-green-900 rounded-xl p-4 card-shadow">
-          <img src="https://picsum.photos/seed/g4/600/400" alt="termek" class="w-full h-44 object-cover rounded-md" />
-          <div class="mt-3">
-            <h3 class="font-semibold text-lg text-white">Boost XP</h3>
-            <p class="text-sm text-gray-400 mt-1">Dupla XP 7 napig</p>
-            <div class="mt-3 flex items-center justify-between">
-              <div class="font-bold text-green-400">490 Ft</div>
-              <button class="px-3 py-2 bg-green-600 hover:bg-green-500 text-white rounded-lg text-sm">Kosárba</button>
-            </div>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- About -->
-    <section id="about" class="mt-16 bg-[var(--card)] rounded-xl p-8 border border-green-900">
-      <h3 class="text-2xl font-semibold text-green-400">Rólunk</h3>
-      <p class="mt-3 text-gray-400">Ez a webshop sablon sötétzöld témában készült, Minecraft szerverekhez hasonló hangulattal. Teljesen reszponzív, GitHub Pages kompatibilis és Tailwind CSS-el könnyen szerkeszthető.</p>
-    </section>
-  </main>
-
-  <!-- Footer -->
-  <footer class="bg-black text-gray-400 py-10 border-t border-green-900">
-    <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
-      <div>
-        <div class="flex items-center gap-3 mb-3">
-          <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center text-black font-bold">T</div>
-          <div>
-            <div class="font-semibold text-white">Topixity Shop</div>
-            <div class="text-xs text-gray-500">Minecraft Webshop</div>
-          </div>
-        </div>
-        <p class="text-sm">Kapcsolat: info@topixity.hu</p>
-      </div>
-
-      <div>
-        <h4 class="font-semibold text-white">Hasznos linkek</h4>
-        <ul class="mt-3 text-sm space-y-2">
-          <li><a href="#" class="hover:text-green-400">Szállítás</a></li>
-          <li><a href="#" class="hover:text-green-400">Visszaküldés</a></li>
-          <li><a href="#" class="hover:text-green-400">Adatvédelem</a></li>
-        </ul>
-      </div>
-
-      <div>
-        <h4 class="font-semibold text-white">Iratkozz fel</h4>
-        <p class="text-sm mt-2">Kedvezmények és újdonságok e-mailben.</p>
-        <form class="mt-4 flex gap-2">
-          <input type="email" placeholder="E-mail" class="px-3 py-2 rounded-lg w-full text-black" />
-          <button class="px-4 py-2 rounded-lg bg-green-600 hover:bg-green-500 text-white">Feliratkozás</button>
-        </form>
-      </div>
-    </div>
-
-    <div class="max-w-6xl mx-auto px-6 mt-8 text-xs text-gray-600">© 2025 Topixity Shop. Minden jog fenntartva.</div>
-  </footer>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6 w-11/12 md:w-2/3">
+    <a href="balushop.html" class="shop-btn rounded-2xl p-8 text-center text-xl font-semibold text-green-200">Balushop</a>
+    <a href="ermeshop.html" class="shop-btn rounded-2xl p-8 text-center text-xl font-semibold text-green-200">Ermeshop</a>
+    <a href="tekishop.html" class="shop-btn rounded-2xl p-8 text-center text-xl font-semibold text-green-200">Tekishop</a>
+  </div>
 
 </body>
 </html>
