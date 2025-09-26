@@ -10,6 +10,20 @@ body {
   color: #d4ffd4; 
   font-family: 'Segoe UI', sans-serif; 
 }
+.close-btn {
+  position: fixed;
+  top: 15px;
+  left: 20px;
+  font-size: 28px;
+  font-weight: bold;
+  color: #ff6666;
+  text-decoration: none;
+  transition: transform 0.2s, color 0.2s;
+}
+.close-btn:hover {
+  color: #ff0000;
+  transform: scale(1.2);
+}
 </style>
 </head>
 <body class="flex flex-col items-center min-h-screen text-center p-10">
@@ -18,6 +32,8 @@ body {
 
 <!-- Kép a cím után -->
 <img src="../webimagine/tekishop.png" alt="Tekishop kép" class="mb-10 w-120 rounded-xl shadow-lg">
+
+<a href="../index.html" class="close-btn">&times;</a>
 
 <!-- Leírás szép formázva -->
 <div class="mt-4 space-y-3 text-lg leading-relaxed">

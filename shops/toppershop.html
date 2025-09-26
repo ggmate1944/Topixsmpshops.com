@@ -10,9 +10,26 @@ body {
   color: #d4ffd4; 
   font-family: 'Segoe UI', sans-serif; 
 }
+.close-btn {
+  position: fixed;
+  top: 15px;
+  left: 20px;
+  font-size: 28px;
+  font-weight: bold;
+  color: #ff6666;
+  text-decoration: none;
+  transition: transform 0.2s, color 0.2s;
+}
+.close-btn:hover {
+  color: #ff0000;
+  transform: scale(1.2);
+}
 </style>
 </head>
 <body class="flex flex-col items-center min-h-screen text-center p-10">
+
+<!-- X gomb -->
+<a href="../index.html" class="close-btn">&times;</a>
 
 <h1 class="text-5xl font-bold text-green-400 mb-10 mt-4">Toppershop</h1>
 
