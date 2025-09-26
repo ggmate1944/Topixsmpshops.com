@@ -14,7 +14,7 @@ body {
   position: fixed;
   top: 15px;
   left: 20px;
-  font-size: 28px;
+  font-size: 64px;
   font-weight: bold;
   color: #ff6666;
   text-decoration: none;
@@ -23,6 +23,24 @@ body {
 .close-btn:hover {
   color: #ff0000;
   transform: scale(1.2);
+}
+.vote-btn {
+  background: linear-gradient(135deg, #1a3d1a, #2f6e2f);
+  padding: 12px 24px;
+  border-radius: 12px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #d4ffd4;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.vote-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px #2f6e2f;
+}
+.vote-btn:disabled {
+  background: #444;
+  cursor: not-allowed;
+  box-shadow: none;
 }
 </style>
 </head>
@@ -43,7 +61,41 @@ body {
 </p>De van most mace meg netherite felszerelés is </p>
   <p><strong>Tulaj:</strong> TeoKingOfWar</p>
   <p><strong>Ár folyam:</strong> 2 - 40k</p>
+<!-- Szavazás -->
+<div class="mt-10">
+  <button id="voteBtn" onclick="vote()" class="vote-btn">Szavazok</button>
+  <p id="voteCount" class="mt-4 text-xl">Szavazatok: 0</p>
 </div>
+
+<script>
+let votes = localStorage.getItem("teoshopVotes") ? parseInt(localStorage.getItem("teoshopVotes")) : 0;
+let hasVoted = localStorage.getItem("teoshopHasVoted") === "true";
+
+// Frissítjük a szavazatok kijelzését
+document.getElementById("voteCount").innerText = "Szavazatok: " + votes;
+
+// Ha már szavazott, tiltjuk a gombot
+if (hasVoted) {
+  document.getElementById("voteBtn").disabled = true;
+  document.getElementById("voteBtn").innerText = "Már szavaztál";
+}
+
+function vote() {
+  if (!hasVoted) {
+    votes++;
+    hasVoted = true;
+
+    // Mentés localStorage-be
+    localStorage.setItem("teoshopVotes", votes);
+    localStorage.setItem("teoshopHasVoted", true);
+
+    // Frissítés a képernyőn
+    document.getElementById("voteCount").innerText = "Szavazatok: " + votes;
+    document.getElementById("voteBtn").disabled = true;
+    document.getElementById("voteBtn").innerText = "Már szavaztál";
+  }
+}
+</script>
 
 </body>
 </html>
