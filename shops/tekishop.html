@@ -6,9 +6,10 @@
 <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 <style>
 body { 
-  background: linear-gradient(135deg, #0a0f0a, #1a3d1a); 
+  background: linear-gradient(135deg, #0a0f0a, #21ac21); 
   color: #d4ffd4; 
   font-family: 'Segoe UI', sans-serif; 
+  overflow: hidden; /* canvas miatt */
 }
 .close-btn {
   position: fixed;
@@ -25,7 +26,7 @@ body {
   transform: scale(1.2);
 }
 .vote-btn {
-  background: linear-gradient(135deg, #1a3d1a, #2f6e2f);
+  background: linear-gradient(135deg, #000000, #2f6e2f);
   padding: 12px 24px;
   border-radius: 12px;
   font-size: 20px;
@@ -42,23 +43,33 @@ body {
   cursor: not-allowed;
   box-shadow: none;
 }
+
+/* Canvas háttér stílus */
+#bgCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1; /* a tartalom alatt */
+}
 </style>
 </head>
 <body class="flex flex-col items-center min-h-screen text-center p-10">
 
+<canvas id="bgCanvas"></canvas>
+
 <h1 class="text-5xl font-bold text-green-400 mb-10 mt-4">Tekishop</h1>
 
-<!-- Kép a cím után -->
 <img src="../webimagine/tekishop.png" alt="Tekishop kép" class="mb-10 w-120 rounded-xl shadow-lg">
 
 <a href="../index.html" class="close-btn">&times;</a>
 
-<!-- Leírás szép formázva -->
 <div class="mt-4 space-y-3 text-lg leading-relaxed">
   <p><strong>Kordi:</strong> -183 109 -266</p>
-  <p><strong>Leírás:</strong> Minden féle tengeri cuc van teki sapi,nautilusz,tengerszive,armortrimek lesd meg</p>
+  <p><strong>Leírás:</strong> Minden féle tengeri cuc van teki sapi, nautilusz, tengerszive, armortrimek lesd meg</p>
   <p><strong>Tulaj:</strong> WarlikesJewel</p>
   <p><strong>Ár folyam:</strong> 1 - 10k</p>
+</div>
+
 <!-- Szavazás -->
 <div class="mt-10">
   <button id="voteBtn" onclick="vote()" class="vote-btn">Szavazok</button>
@@ -66,33 +77,86 @@ body {
 </div>
 
 <script>
+// Szavazás
 let votes = localStorage.getItem("tekishopVotes") ? parseInt(localStorage.getItem("tekishopVotes")) : 0;
 let hasVoted = localStorage.getItem("tekishopHasVoted") === "true";
-
-// Frissítjük a szavazatok kijelzését
 document.getElementById("voteCount").innerText = "Szavazatok: " + votes;
-
-// Ha már szavazott, tiltjuk a gombot
 if (hasVoted) {
   document.getElementById("voteBtn").disabled = true;
   document.getElementById("voteBtn").innerText = "Már szavaztál";
 }
-
 function vote() {
   if (!hasVoted) {
     votes++;
     hasVoted = true;
-
-    // Mentés localStorage-be
     localStorage.setItem("tekishopVotes", votes);
     localStorage.setItem("tekishopHasVoted", true);
-
-    // Frissítés a képernyőn
     document.getElementById("voteCount").innerText = "Szavazatok: " + votes;
     document.getElementById("voteBtn").disabled = true;
     document.getElementById("voteBtn").innerText = "Már szavaztál";
   }
 }
+
+// Háttér animáció
+const canvas = document.getElementById("bgCanvas");
+const ctx = canvas.getContext("2d");
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+window.addEventListener("resize", () => {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+});
+
+class Ball {
+  constructor() {
+    this.x = Math.random() * canvas.width;
+    this.y = Math.random() * canvas.height;
+    this.radius = 5 + Math.random() * 10;
+    this.color = "rgba(144, 238, 144, 0.7)";
+    this.dy = Math.random() * 2 + 1;
+    this.dx = (Math.random() - 0.5) * 1;
+    this.gravity = 0.05;
+    this.friction = 0.9;
+  }
+
+  update() {
+    if (this.y + this.radius + this.dy > canvas.height) {
+      this.dy = -this.dy * this.friction;
+    } else {
+      this.dy += this.gravity;
+    }
+
+    if (this.x + this.radius > canvas.width || this.x - this.radius < 0) {
+      this.dx = -this.dx;
+    }
+
+    this.x += this.dx;
+    this.y += this.dy;
+    this.draw();
+  }
+
+  draw() {
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+    ctx.fillStyle = this.color;
+    ctx.fill();
+    ctx.closePath();
+  }
+}
+
+const balls = [];
+for (let i = 0; i < 30; i++) {
+  balls.push(new Ball());
+}
+
+function animate() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  balls.forEach(ball => ball.update());
+  requestAnimationFrame(animate);
+}
+
+animate();
 </script>
 
 </body>
